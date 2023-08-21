@@ -49,24 +49,36 @@ class Solution{
     //Function to find the leaders in the array.
      static ArrayList<Integer> leaders(int arr[], int n){
 
-         ArrayList<Integer> ans = new ArrayList<>();
+          ArrayList<Integer> ans = new ArrayList<>();
          
          
-         ans.add(arr[0]);
-         for(int i=1; i<n; i++){
+        
+        //  for(int i=0; i<n; i++){
 
                 
-                int j = ans.size()-1;
+        //         int j = ans.size()-1;
                 
-                while(j >= 0 && ans.get(j) < arr[i] ){
-                    ans.remove(j);
-                    j--;
-                }
+        //         while(j >= 0 && ans.get(j) < arr[i] ){
+        //             ans.remove(j);
+        //             j--;
+        //         }
                 
-             ans.add(arr[i]);
+        //      ans.add(arr[i]);
 
 
-         }
-           return ans;
+        //  }
+        //   return ans;
+        
+        int max = arr[n-1];
+        
+        for(int i=n-1; i>=0; i--){
+            if(max <= arr[i]){
+                ans.add(arr[i]);
+                max = arr[i];
+            }
+        }
+        
+        Collections.reverse(ans);
+        return ans;
     }
 }
